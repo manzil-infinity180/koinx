@@ -1,6 +1,4 @@
 import mongoose, { Schema, model } from "mongoose";
-import { number, string } from "zod";
-
 export interface Coin {
   coin: string;
   price: number;
