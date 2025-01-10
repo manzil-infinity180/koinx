@@ -4,17 +4,12 @@ export const app = express();
 import bodyParser from "body-parser";
 import { router as coinRoute} from "./routers/coinRoute.js";
 import { scheduleCronJob } from "./controllers/coinController.js";
-import { fileURLToPath } from 'url';
-import path, { dirname } from 'path';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
-app.use(express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 app.use(express.json());
 
 app.get('/', (req:Request, res: Response) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
+    res.send("server is running");
 })
 app.use('/', coinRoute);
 cron.schedule('0 */2 * * *',async () => {
